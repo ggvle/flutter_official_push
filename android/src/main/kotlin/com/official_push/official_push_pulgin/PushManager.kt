@@ -2,8 +2,11 @@ package com.official_push.official_push_pulgin
 
 import android.content.Context
 import com.official_push.official_push_pulgin.config.Config
+import com.official_push.official_push_pulgin.honour.HonourPushPlugin
 import com.official_push.official_push_pulgin.oppo.OppoPushPlugin
 import com.official_push.official_push_pulgin.util.CommonUtil
+import com.official_push.official_push_pulgin.util.PushLog
+import com.official_push.official_push_pulgin.vivo.VivoPushPlugin
 import com.official_push.official_push_pulgin.xiaomi.XiaomiPushPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -46,10 +49,13 @@ class PushManager {
                 XiaomiPushPlugin.get().init(call,result,context);
             }
             Config.Type.OPPO->{
-                val appKey = CommonUtil.getParam<String>(call, result, "appKey")
-                val appSecret = CommonUtil.getParam<String>(call, result, "appSecret")
-                val needLog = CommonUtil.getParam<Boolean>(call, result, "needLog")
-                OppoPushPlugin.get().init(context,needLog,appKey,appSecret)
+                OppoPushPlugin.get().init(call,result,context)
+            }
+            Config.Type.VIVO->{
+                VivoPushPlugin.get().init(call,result,context)
+            }
+            Config.Type.HONOUR->{
+                HonourPushPlugin.get().init(call,result,context)
             }
         }
     }
@@ -59,7 +65,13 @@ class PushManager {
                 XiaomiPushPlugin.get().getRegId(call,result,context)
             }
             Config.Type.OPPO->{
-                OppoPushPlugin.get().getRegister()
+                OppoPushPlugin.get().getRegId(call,result,context)
+            }
+            Config.Type.VIVO->{
+                VivoPushPlugin.get().getRegId(call,result,context)
+            }
+            Config.Type.HONOUR->{
+                HonourPushPlugin.get().getRegId(call,result,context)
             }
         }
     }
@@ -71,7 +83,7 @@ class PushManager {
         }
     }
     fun enableLog(enableLog:Boolean) {
-       Config.logEnable=enableLog
+       PushLog.logEnable=enableLog
     }
 
 }

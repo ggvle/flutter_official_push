@@ -5,7 +5,6 @@ import 'package:official_push_pulgin/config/config.dart';
 import 'package:official_push_pulgin/models/push_model.dart';
 import 'package:official_push_pulgin/push_listener.dart';
 import 'package:official_push_pulgin/push_manager.dart';
-import 'package:official_push_pulgin/xiaomi/xiaomi_push_plugin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String? pushType;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -126,17 +126,47 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                // PushManager.initXiaomiPush(appId: "2882303761520146660", appKey: "5782014690660");
-                PushManager.initOppoPush(appSecret: "4f55a5a6bb49421f96afa62c9046576f", appKey: "9d130872d1734b37865b4409a59eea95",needLog: true);
+                PushManager.initOppoPush(appSecret: "sK8dkfTwHt11QezBuIO4kjJV", appKey: "67ZtaSY1EyjZZoYqqYVT6e3X",needLog: true);
+                pushType=PushType.oppo;
               },
               child: const Text(
-                  "注册"
+                  "注册oppoPush"
+              ),
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: () {
+                PushManager.initXiaomiPush(appId: "1000270", appKey: "670100056270");
+                pushType=PushType.xiaomi;
+              },
+              child: const Text(
+                  "注册xiaomiPush"
+              ),
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: () {
+                PushManager.initVivoPush();
+                pushType=PushType.vivo;
+              },
+              child: const Text(
+                  "注册vivo Push"
+              ),
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: () {
+                PushManager.initHonourPush(initToken: true);
+                pushType=PushType.honour;
+              },
+              child: const Text(
+                  "注册honour Push"
               ),
             ),
             const SizedBox(height: 20,),
             ElevatedButton(
               onPressed: () async {
-                var s = await PushManager.getRegId(PushType.xiaomi);
+                var s = await PushManager.getRegId(pushType??PushType.xiaomi);
                 // var s = await PushManager.getRegId(PushType.oppo);
                 setState(() {
                   regId=s??"";

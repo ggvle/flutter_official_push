@@ -90,7 +90,7 @@
 
         <!--oppo 推送配置  1)OPPO推送服务SDK支持的最低安卓版本为Android 4.4系统。推送服务组件注册-->
         <service
-            android:name=".oppo.OppoAppPushMessageService"
+            android:name="com.official_push.official_push_pulgin.oppo.OppoAppPushMessageService"
             android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE"
             android:exported="true">
             <intent-filter>
@@ -100,12 +100,52 @@
         </service>
 
         <service
-            android:name=".oppo.OppoPushMessageService"
+            android:name="com.official_push.official_push_pulgin.oppo.OppoPushMessageService"
             android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE"/>
             </intent-filter>
         </service> <!--（兼容Q以下版本，继承CompatibleDataMessageCallbackService）-->
+        <!--Oppo 推送配置 End!-->
+
+        <!--Vivo Push开放平台中应用的appid 和api key-->
+        <meta-data
+            android:name="api_key"
+            android:value="${VIVO_APPKEY}"/>
+
+        <meta-data
+            android:name="app_id"
+            android:value="${VIVO_APPID}"/>
+        <!--push应用定义消息receiver声明-->
+        <receiver android:name=".vivo.VivoPushMessageReceiverImpl"
+            android:exported="false">
+            <intent-filter>
+                <!--接收push消息-->
+                <action android:name="com.vivo.pushclient.action.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <!--Vivo Push需要配置的service、activity-->
+        <service
+            android:name="com.vivo.push.sdk.service.CommandClientService"
+            android:permission="com.push.permission.UPSTAGESERVICE"
+            android:exported="true"/>
+        <!--Vivo Push SDK的版本信息-->
+        <meta-data
+            android:name="sdk_version_vivo"
+            android:value="484"/>
+        <!--Vivo Push End!-->
+
+        <!--Honour Push !-->
+        <meta-data
+            android:name="com.hihonor.push.app_id"
+            android:value="${HONOUR_APPID}" />
+        <service
+            android:name="com.official_push.official_push_pulgin.honour.HonorPushMsgService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.hihonor.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>

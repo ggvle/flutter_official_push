@@ -1,6 +1,6 @@
 name: official_push_pulgin
 description: This is a Plug-ins pushed by the manufacturer
-version: 0.0.2
+version: 0.0.5
 homepage: https://github.com/ggvle/FlutterPush
 
 environment:
@@ -39,17 +39,6 @@ flutter:
       android:
         package: com.official_push.official_push_pulgin
         pluginClass: OfficialPushPulginPlugin
-      ios:
-        pluginClass: OfficialPushPulginPlugin
-      linux:
-        pluginClass: OfficialPushPulginPlugin
-      macos:
-        pluginClass: OfficialPushPulginPlugin
-      windows:
-        pluginClass: OfficialPushPulginPluginCApi
-      web:
-        pluginClass: OfficialPushPulginWeb
-        fileName: official_push_pulgin_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

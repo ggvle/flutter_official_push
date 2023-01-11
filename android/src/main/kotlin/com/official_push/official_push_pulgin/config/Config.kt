@@ -1,9 +1,6 @@
 package com.official_push.official_push_pulgin.config
 
 class Config {
-    companion object{
-        var logEnable=false;
-    }
     internal object Fun {
         const val METHOD_INIT = "method_init"
         const val METHOD_GET_REG_ID = "method_get_reg_id"
@@ -14,5 +11,7 @@ class Config {
     internal object Type {
         const val XIAO_MI = "xiaomi"
         const val OPPO = "oppo"
+        const val VIVO = "vivo"
+        const val HONOUR = "honour"
     }
 }

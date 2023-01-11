@@ -4,12 +4,18 @@ import android.util.Log
 
 class PushLog {
     companion object {
+        var logEnable=true;
         private const val logTag="Push-Plugin："
         fun d(tag:String,msg:String){
-             Log.d(logTag,tag+msg)
+            if(logEnable){
+                Log.d(logTag,tag+msg)
+            }
+
         }
         fun e(tag:String,msg:String){
-            Log.e(logTag,tag+msg)
+            if(logEnable){
+                Log.e(logTag,tag+msg)
+            }
         }
     }
 

@@ -3,7 +3,6 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  official_push_pulgin
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

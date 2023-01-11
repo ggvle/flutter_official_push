@@ -44,14 +44,20 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-//        applicationId "test"
-        applicationId "im.metatel.org"
+        applicationId "push.test.example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders += [
+                VIVO_APPKEY : "9c29fe5f-ea67-46d3-951f-81da78d2c029",
+                VIVO_APPID  : "10000",
+                //
+                HONOUR_APPID: "11111111",
+
+        ]
     }
 
     buildTypes {

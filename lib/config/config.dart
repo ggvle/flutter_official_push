@@ -9,4 +9,6 @@ class Config{
 class PushType{
   static const xiaomi="xiaomi";
   static const oppo="oppo";
+  static const vivo="vivo";
+  static const honour="honour";
 }

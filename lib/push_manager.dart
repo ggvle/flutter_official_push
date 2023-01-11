@@ -19,9 +19,10 @@ class PushManager{
     });
   }
 
-  /// 初始化小米push，如果没有appId或appKey，请登录小米开发者中心申请
-  /// [appKey] 应用appId
-  /// [appSecret] 应用appKey
+  /// 初始化OPPO push，
+  /// [appKey] 应用appKey
+  /// [appSecret] 应用appSecret
+  /// [needLog] 应用是否打开推送日志
   static Future<void> initOppoPush({
     required String appKey,
     required String appSecret,
@@ -34,6 +35,19 @@ class PushManager{
     });
   }
 
+  /// 初始化Vivo push，
+  /// [appKey] 应用appKey
+  /// [appSecret] 应用appSecret
+  static Future<void> initVivoPush() async {
+    return await channel.invokeMethod(Config.methodInit, {"type":PushType.vivo});
+  }
+  /// 初始化Honour push，
+  /// [initToken] 是否推送注册成功之后返回token
+  static Future<void> initHonourPush({
+    required bool initToken,
+  }) async {
+    return await channel.invokeMethod(Config.methodInit, {"type":PushType.honour,"initToken":initToken});
+  }
   /// 获取客户端的 RegId
   static Future<String?> getRegId(String type) async {
     return await channel.invokeMethod(Config.methodGetRegId,{"type":type,});

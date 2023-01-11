@@ -1,9 +1,9 @@
 package com.official_push.official_push_pulgin.oppo
 
 import com.heytap.msp.push.callback.ICallBackResultService
-import com.official_push.official_push_pulgin.model.PushCallBackModel
 import com.official_push.official_push_pulgin.PushManager
 import com.official_push.official_push_pulgin.config.Config
+import com.official_push.official_push_pulgin.model.PushCallBackModel
 import com.official_push.official_push_pulgin.util.PushLog
 
 class OppoRegisterCallBack : ICallBackResultService {
@@ -11,7 +11,7 @@ class OppoRegisterCallBack : ICallBackResultService {
         if (code == 0) {
             PushLog.d("注册成功", "registerId:$s")
             val model = PushCallBackModel(Config.Type.OPPO,s,null)
-            PushManager.invokeListener(Config.Type.OPPO,model.toString());
+            PushManager.invokeListener(Config.Type.OPPO,model.toJsonStr());
         } else {
             PushLog.d("注册失败", "code=$code,msg=$s")
         }

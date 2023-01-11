@@ -3,9 +3,12 @@ package com.official_push.official_push_pulgin.oppo
 import android.content.Context
 import com.heytap.msp.push.HeytapPushManager
 import com.heytap.msp.push.callback.ICallBackResultService
-import com.official_push.official_push_pulgin.config.Config
+import com.official_push.official_push_pulgin.AbsPushPlugin
+import com.official_push.official_push_pulgin.util.CommonUtil
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
 
-class OppoPushPlugin {
+class OppoPushPlugin :AbsPushPlugin(){
     companion object {
         private var instance: OppoPushPlugin? = null
             get() {
@@ -20,8 +23,10 @@ class OppoPushPlugin {
         }
     }
     var mPushCallback:ICallBackResultService? = null
-    fun init(context: Context,needLog:Boolean,appKey:String,appSecret:String){
-        Config.logEnable=needLog
+    override fun init(call: MethodCall, result: MethodChannel.Result, context: Context){
+        val appKey = CommonUtil.getParam<String>(call, result, "appKey")
+        val appSecret = CommonUtil.getParam<String>(call, result, "appSecret")
+        val needLog = CommonUtil.getParam<Boolean>(call, result, "needLog")
         HeytapPushManager.init(context, needLog)
         if(this.mPushCallback!=null){
             this.mPushCallback=null
@@ -38,7 +43,14 @@ class OppoPushPlugin {
 
         HeytapPushManager.requestNotificationPermission()
     }
-    fun getRegister(){
+
+    override fun getRegId(call: MethodCall, result: MethodChannel.Result, context: Context) {
         HeytapPushManager.getRegister()
+
     }
+
+    override fun clearAllNotification(context: Context) {
+        TODO("Not yet implemented")
+    }
+
 }
