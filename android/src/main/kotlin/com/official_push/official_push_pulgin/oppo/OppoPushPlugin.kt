@@ -34,6 +34,7 @@ class OppoPushPlugin :AbsPushPlugin(){
         }else{
             this.mPushCallback= OppoRegisterCallBack()
         }
+        val supportPush = HeytapPushManager.isSupportPush(context)
         HeytapPushManager.register(
             context,
             appKey,

@@ -30,7 +30,7 @@ class PushManager{
   }) async {
     return await channel.invokeMethod(Config.methodInit, {"type":PushType.oppo,
       "appKey": appKey,
-      "appSecret": appKey,
+      "appSecret": appSecret,
       "needLog": needLog,
     });
   }

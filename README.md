@@ -44,6 +44,16 @@ samples, guidance on mobile development, and a full API reference.
     ]
 
 ## 4.如果应用开启混淆请参考各推送官网混淆配置
+    -keep public class * extends android.app.Service
+    -keep class com.heytap.msp.** { *;}
+     
+    -dontwarn com.vivo.push.**
+
+    -keep class com.vivo.push.**{*; }
+
+    -keep class com.vivo.vms.**{*; }
+
+    -keep class   xxx.xxx.xxx.PushMessageReceiverImpl{*;}
 
 ## 5.初始化注册推送(请根据不同的设备设备类型选择调用不同的初始化)
 
