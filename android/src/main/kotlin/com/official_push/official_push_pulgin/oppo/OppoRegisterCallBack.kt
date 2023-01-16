@@ -10,8 +10,9 @@ class OppoRegisterCallBack : ICallBackResultService {
     override fun onRegister(code: Int, s: String) {
         if (code == 0) {
             PushLog.d("注册成功", "registerId:$s")
-            val model = PushCallBackModel(Config.Type.OPPO,s,null)
-            PushManager.invokeListener(Config.Type.OPPO,model.toJsonStr());
+            val modelJsonStr = PushCallBackModel(Config.Type.OPPO,s,null).toJsonStr()
+            PushLog.d("注册成功", "modelJsonStr:$modelJsonStr")
+            PushManager.invokeListener(Config.Type.OPPO,modelJsonStr);
         } else {
             PushLog.d("注册失败", "code=$code,msg=$s")
         }

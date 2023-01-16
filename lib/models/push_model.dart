@@ -4,12 +4,13 @@ class PushModel{
   String? pushReceiverFunJsonStr;
   PushModel();
   PushModel.fromJson(Map<String,dynamic> data){
-    regId=data["reg_id"];
-    pushReceiverFunJsonStr=data["fun_json"];
+    type=data["type"];
+    regId=data["regId"];
+    pushReceiverFunJsonStr=data["pushReceiverFunJsonStr"];
   }
   Map<String, dynamic> toJson() => {
     'type': type,
-    'reg_id': regId,
+    'regId': regId,
     'pushReceiverFunJsonStr': pushReceiverFunJsonStr,
   };
 }

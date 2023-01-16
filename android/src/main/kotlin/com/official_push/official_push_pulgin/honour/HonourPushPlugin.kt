@@ -1,6 +1,7 @@
 package com.official_push.official_push_pulgin.honour
 
 import android.content.Context
+import com.hihonor.push.sdk.HonorPushClient
 import com.official_push.official_push_pulgin.AbsPushPlugin
 import com.official_push.official_push_pulgin.util.CommonUtil
 import io.flutter.plugin.common.MethodCall
@@ -23,12 +24,12 @@ class HonourPushPlugin:AbsPushPlugin() {
     }
     override fun init(call: MethodCall, result: MethodChannel.Result, context: Context) {
         val initToken:Boolean? = CommonUtil.getParam(call, result, "initToken")
-//        HonorPushClient.getInstance().init(context, initToken?:true)
+        HonorPushClient.getInstance().init(context, initToken?:true)
     }
 
     override fun getRegId(call: MethodCall, result: MethodChannel.Result, context: Context) {
-//        val callBackImp = HonourGetTokenCallBackImp()
-//        HonorPushClient.getInstance().getPushToken(callBackImp)
+        val callBackImp = HonourGetTokenCallBackImp()
+        HonorPushClient.getInstance().getPushToken(callBackImp)
     }
 
     override fun clearAllNotification(context: Context) {
