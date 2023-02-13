@@ -1,10 +1,10 @@
 name: official_push_pulgin
 description: This is a Plug-ins pushed by the manufacturer
-version: 0.0.5
+version: 0.0.8
 homepage: https://github.com/ggvle/FlutterPush
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=2.18.4 <3.0.0'
   flutter: ">=2.5.0"
 
 dependencies:

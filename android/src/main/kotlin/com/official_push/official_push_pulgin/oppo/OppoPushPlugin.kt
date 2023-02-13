@@ -5,6 +5,7 @@ import com.heytap.msp.push.HeytapPushManager
 import com.heytap.msp.push.callback.ICallBackResultService
 import com.official_push.official_push_pulgin.AbsPushPlugin
 import com.official_push.official_push_pulgin.util.CommonUtil
+import com.official_push.official_push_pulgin.util.PushLog
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
@@ -27,6 +28,7 @@ class OppoPushPlugin :AbsPushPlugin(){
         val appKey = CommonUtil.getParam<String>(call, result, "appKey")
         val appSecret = CommonUtil.getParam<String>(call, result, "appSecret")
         val needLog = CommonUtil.getParam<Boolean>(call, result, "needLog")
+        PushLog.logEnable=needLog
         HeytapPushManager.init(context, needLog)
         if(this.mPushCallback!=null){
             this.mPushCallback=null

@@ -44,6 +44,11 @@ class PushManager {
     }
 
     fun init(type:String, call: MethodCall, result: MethodChannel.Result,context:Context) {
+        val enableLog = CommonUtil.getParam<Boolean>(call, result, "enableLog")
+        PushLog.d("","enableLog==$enableLog")
+        if(enableLog!=null){
+            PushLog.logEnable=enableLog
+        }
         when(type){
             Config.Type.XIAO_MI->{
                 XiaomiPushPlugin.get().init(call,result,context);

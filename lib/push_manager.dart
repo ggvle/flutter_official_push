@@ -12,10 +12,12 @@ class PushManager{
   static Future<void> initXiaomiPush({
     required String appId,
     required String appKey,
+    bool enableLog=false,
   }) async {
     return await channel.invokeMethod(Config.methodInit, {"type":PushType.xiaomi,
       "appId": appId,
       "appKey": appKey,
+      "enableLog": enableLog,
     });
   }
 
@@ -26,27 +28,29 @@ class PushManager{
   static Future<void> initOppoPush({
     required String appKey,
     required String appSecret,
-    required bool needLog,
+    bool needLog=false,
   }) async {
     return await channel.invokeMethod(Config.methodInit, {"type":PushType.oppo,
       "appKey": appKey,
       "appSecret": appSecret,
       "needLog": needLog,
+      "enableLog": needLog,
     });
   }
 
   /// 初始化Vivo push，
   /// [appKey] 应用appKey
   /// [appSecret] 应用appSecret
-  static Future<void> initVivoPush() async {
-    return await channel.invokeMethod(Config.methodInit, {"type":PushType.vivo});
+  static Future<void> initVivoPush({bool enableLog=false}) async {
+    return await channel.invokeMethod(Config.methodInit, {"type":PushType.vivo,"enableLog":enableLog,});
   }
   /// 初始化Honour push，
   /// [initToken] 是否推送注册成功之后返回token
   static Future<void> initHonourPush({
     required bool initToken,
+    bool enableLog=false,
   }) async {
-    return await channel.invokeMethod(Config.methodInit, {"type":PushType.honour,"initToken":initToken});
+    return await channel.invokeMethod(Config.methodInit, {"type":PushType.honour,"initToken":initToken,"enableLog":enableLog});
   }
   /// 获取客户端的 RegId
   static Future<String?> getRegId(String type) async {

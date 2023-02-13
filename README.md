@@ -44,16 +44,21 @@ samples, guidance on mobile development, and a full API reference.
     ]
 
 ## 4.如果应用开启混淆请参考各推送官网混淆配置
+### oppo
     -keep public class * extends android.app.Service
     -keep class com.heytap.msp.** { *;}
      
+### vivo
     -dontwarn com.vivo.push.**
 
     -keep class com.vivo.push.**{*; }
 
     -keep class com.vivo.vms.**{*; }
+    
+    -keep class   com.official_push.official_push_pulgin.vivo.VivoPushMessageReceiverImpl{*;}
 
-    -keep class   xxx.xxx.xxx.PushMessageReceiverImpl{*;}
+### xiaomi
+    -keep class   com.official_push.official_push_pulgin.xiaomi.XiaomiMessageReceiver{*;}
 
 ## 5.初始化注册推送(请根据不同的设备设备类型选择调用不同的初始化)
 
@@ -64,15 +69,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ### 5.2 xiaomi
 
-    ///小米官网推送平台申请的appId、appKey
-    PushManager.initXiaomiPush(appId: "1000270", appKey: "670100056270");
+    ///小米官网推送平台申请的appId、appKey、enableLog是否开启日志可选，默认不开
+    PushManager.initXiaomiPush(appId: "1000270", appKey: "670100056270",enableLog:true);
 ### 5.3 vivo
-
-    PushManager.initVivoPush();
+    ///enableLog是否开启日志可选，默认不开
+    PushManager.initVivoPush(enableLog:true);
 ### 5.4 honour
 
-    ///initToken 是否初始化注册成功后返回推送regId
-    PushManager.initHonourPush(initToken: true);
+    ///initToken 是否初始化注册成功后返回推送regId ,enableLog是否开启日志可选，默认不开
+    PushManager.initHonourPush(initToken: true,enableLog:true);
 
 ## 6.在需要获取推送regId的地方注册监听
 
