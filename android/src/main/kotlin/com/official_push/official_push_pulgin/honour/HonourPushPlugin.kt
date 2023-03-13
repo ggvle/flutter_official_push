@@ -4,6 +4,7 @@ import android.content.Context
 import com.hihonor.push.sdk.HonorPushClient
 import com.official_push.official_push_pulgin.AbsPushPlugin
 import com.official_push.official_push_pulgin.util.CommonUtil
+import com.official_push.official_push_pulgin.util.PushLog
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
@@ -33,6 +34,10 @@ class HonourPushPlugin:AbsPushPlugin() {
     }
 
     override fun clearAllNotification(context: Context) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun unRegister(context: Context) {
+        PushLog.d("honour---","unRegister not imp!!!")
     }
 }

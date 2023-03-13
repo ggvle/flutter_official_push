@@ -3,6 +3,7 @@ package com.official_push.official_push_pulgin.config
 class Config {
     internal object Fun {
         const val METHOD_INIT = "method_init"
+        const val METHOD_UN_REGISTER = "method_un_register"
         const val METHOD_GET_REG_ID = "method_get_reg_id"
         const val METHOD_CLEAR_ALL_NOTIFICATION = "method_clear_all_notification"
         const val METHOD_ON_LISTENER = "method_on_listener"

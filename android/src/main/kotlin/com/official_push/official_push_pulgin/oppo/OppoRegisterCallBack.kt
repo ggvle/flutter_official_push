@@ -9,8 +9,7 @@ import com.official_push.official_push_pulgin.util.PushLog
 class OppoRegisterCallBack : ICallBackResultService {
     override fun onRegister(code: Int, s: String) {
         if (code == 0) {
-            PushLog.d("注册成功", "registerId:$s")
-            val modelJsonStr = PushCallBackModel(Config.Type.OPPO,s,null).toJsonStr()
+            val modelJsonStr = PushCallBackModel(Config.Type.OPPO,s,null,Config.Fun.METHOD_GET_REG_ID,code).toJsonStr()
             PushLog.d("注册成功", "modelJsonStr:$modelJsonStr")
             PushManager.invokeListener(Config.Type.OPPO,modelJsonStr);
         } else {
@@ -20,7 +19,9 @@ class OppoRegisterCallBack : ICallBackResultService {
 
     override fun onUnRegister(code: Int) {
         if (code == 0) {
-            PushLog.d("注销成功", "code=$code")
+            val modelJsonStr = PushCallBackModel(Config.Type.OPPO,null,null,Config.Fun.METHOD_UN_REGISTER,code).toJsonStr()
+            PushLog.d("注销成功", "modelJsonStr:$modelJsonStr")
+            PushManager.invokeListener(Config.Type.OPPO,modelJsonStr);
         } else {
             PushLog.d("注销失败", "code=$code")
         }

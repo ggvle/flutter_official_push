@@ -13,7 +13,7 @@ import com.official_push.official_push_pulgin.util.PushLog
 class HonorPushMsgService : HonorMessageService() {
     //Token发生变化时，会以onNewToken方法返回
     override fun onNewToken(pushToken: String) {
-        val model= PushCallBackModel(Config.Type.HONOUR,pushToken,null)
+        val model= PushCallBackModel(Config.Type.HONOUR,pushToken,null,Config.Fun.METHOD_GET_REG_ID,0)
         PushManager.invokeListener(Config.Type.HONOUR,model.toJsonStr())
         //查询通知栏消息状态
         HonorPushClient.getInstance()

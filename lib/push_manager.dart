@@ -61,4 +61,8 @@ class PushManager{
   static Future<String?> clearAllNotification(String type) async {
     return await channel.invokeMethod(Config.methodClearAllNotification,{"type":type,});
   }
+  /// 取消推送注册
+  static Future<String?> unRegister(String type) async {
+    return await channel.invokeMethod(Config.methodUnRegister,{"type":type,});
+  }
 }

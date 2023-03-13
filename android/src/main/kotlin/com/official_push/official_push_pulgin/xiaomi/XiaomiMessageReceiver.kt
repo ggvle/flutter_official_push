@@ -35,7 +35,7 @@ class XiaomiMessageReceiver: PushMessageReceiver() {
         if(commandArguments!=null&&commandArguments.size>0){
             val regId = commandArguments[0]
             PushLog.d("XiaomiPush:","---onReceiveRegisterResult--- regId=${regId}")
-            val model = PushCallBackModel(Config.Type.XIAO_MI,regId,null)
+            val model = PushCallBackModel(Config.Type.XIAO_MI,regId,null,Config.Fun.METHOD_GET_REG_ID,0)
             PushManager.invokeListener(Config.Type.XIAO_MI,model.toJsonStr());
         }
 //        if(commandArguments!=null&&commandArguments.size>1){

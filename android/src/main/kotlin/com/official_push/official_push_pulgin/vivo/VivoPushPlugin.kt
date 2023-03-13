@@ -37,7 +37,7 @@ class VivoPushPlugin:AbsPushPlugin() {
             if(it==0){
                 val regId = PushClient.getInstance(context).regId
                 PushLog.d("vivo---","turnOnPush regId==$regId")
-                val model:PushCallBackModel = PushCallBackModel(Config.Type.VIVO,regId,null)
+                val model =PushCallBackModel(Config.Type.VIVO,regId,null,Config.Fun.METHOD_GET_REG_ID,0)
                 PushManager.invokeListener(Config.Type.VIVO,model.toJsonStr());
             }
         }
@@ -65,7 +65,11 @@ class VivoPushPlugin:AbsPushPlugin() {
     }
 
     override fun clearAllNotification(context: Context) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun unRegister(context: Context) {
+        PushLog.d("vivo---","unRegister not imp!!!")
     }
 
 }

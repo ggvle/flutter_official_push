@@ -53,7 +53,13 @@ class OppoPushPlugin :AbsPushPlugin(){
     }
 
     override fun clearAllNotification(context: Context) {
-        TODO("Not yet implemented")
+        HeytapPushManager.clearNotifications();
+    }
+    /**
+     * 清空通知
+     */
+    override fun unRegister(context: Context){
+        HeytapPushManager.unRegister()
     }
 
 }

@@ -18,4 +18,10 @@ abstract class AbsPushPlugin {
      * 清空通知
      */
     abstract fun clearAllNotification(context: Context)
+
+    /**
+     * 取消推送注册
+     */
+    abstract fun unRegister(context: Context)
+
 }

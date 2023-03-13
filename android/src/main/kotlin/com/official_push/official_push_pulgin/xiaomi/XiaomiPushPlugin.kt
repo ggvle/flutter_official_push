@@ -3,6 +3,7 @@ package com.official_push.official_push_pulgin.xiaomi
 import android.content.Context
 import com.official_push.official_push_pulgin.AbsPushPlugin
 import com.official_push.official_push_pulgin.util.CommonUtil
+import com.official_push.official_push_pulgin.util.PushLog
 import com.xiaomi.mipush.sdk.MiPushClient
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -43,5 +44,10 @@ class XiaomiPushPlugin() : AbsPushPlugin() {
 
     override fun clearAllNotification(context: Context){
         MiPushClient.clearNotification(context)
+    }
+
+    override fun unRegister(context: Context) {
+        PushLog.d("xiaomi---","unRegister not imp!!!")
+//        MiPushClient.unregisterPush(context)
     }
 }

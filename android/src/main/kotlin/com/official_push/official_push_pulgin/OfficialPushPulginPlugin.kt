@@ -45,6 +45,9 @@ class OfficialPushPulginPlugin: FlutterPlugin, MethodCallHandler {
         Fun.METHOD_GET_REG_ID ->{
           PushManager.get().getRegId(type,call,result,applicationContext)
         }
+        Fun.METHOD_UN_REGISTER ->{
+          PushManager.get().unRegister(type,call,result,applicationContext)
+        }
         Fun.METHOD_CLEAR_ALL_NOTIFICATION ->{
           PushManager.get().clearAllNotification(type,applicationContext)
         }

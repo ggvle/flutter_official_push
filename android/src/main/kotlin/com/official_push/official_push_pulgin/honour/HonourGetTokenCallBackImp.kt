@@ -9,7 +9,7 @@ import com.official_push.official_push_pulgin.util.PushLog
 class HonourGetTokenCallBackImp : HonorPushCallback<String?> {
     override fun onSuccess(token: String?) {
         PushLog.d("HonourPushPlugin.logTag","HonourGetTokenCallBackImp onSuccess regId=$token")
-        val model=PushCallBackModel(Config.Type.HONOUR,token,null)
+        val model=PushCallBackModel(Config.Type.HONOUR,token,null,Config.Fun.METHOD_GET_REG_ID,0)
         PushManager.invokeListener(Config.Type.HONOUR,model.toJsonStr())
     }
     override fun onFailure(code: Int, msg: String) {

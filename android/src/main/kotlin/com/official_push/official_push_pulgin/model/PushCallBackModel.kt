@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose
 
 
 
-data class PushCallBackModel(val type:String?, val regId:String?, val pushReceiverFunJsonStr:String?) {
+data class PushCallBackModel(val type:String?, val regId:String?, val pushReceiverFunJsonStr:String?,val methodType:String?,val code:Int?) {
 
     fun toJsonStr():String{
         return Gson().toJson(this)

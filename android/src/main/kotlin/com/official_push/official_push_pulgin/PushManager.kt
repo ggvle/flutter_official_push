@@ -80,10 +80,26 @@ class PushManager {
             }
         }
     }
+    fun unRegister(type:String, call: MethodCall, result: MethodChannel.Result,context:Context) {
+        when(type){
+            Config.Type.OPPO->{
+                OppoPushPlugin.get().unRegister(context)
+            }
+        }
+    }
     fun clearAllNotification(type:String, context:Context) {
         when(type){
             Config.Type.XIAO_MI->{
                 XiaomiPushPlugin.get().clearAllNotification(context)
+            }
+            Config.Type.OPPO->{
+                OppoPushPlugin.get().clearAllNotification(context)
+            }
+            Config.Type.VIVO->{
+                VivoPushPlugin.get().clearAllNotification(context)
+            }
+            Config.Type.HONOUR->{
+                HonourPushPlugin.get().clearAllNotification(context)
             }
         }
     }
