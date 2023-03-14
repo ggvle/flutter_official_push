@@ -1,7 +1,7 @@
 name: official_push_pulgin
 description: This is a Plug-ins pushed by the manufacturer
 version: 0.0.9
-homepage: https://github.com/ggvle/FlutterPush
+homepage: https://github.com/ggvle/flutter_official_push
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
