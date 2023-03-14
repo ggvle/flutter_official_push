@@ -94,3 +94,8 @@ samples, guidance on mobile development, and a full API reference.
 
     ///参数为推送类型  其中小米、vivo会直接返回，oppo、honour回调中获取到
     await PushManager.getRegId(PushType.xiaomi);
+
+## 8.注销
+
+    ///参数为推送类型  其中小米、vivo会直接返回，oppo、honour回调中获取到
+    await PushManager.unRegister(context);
