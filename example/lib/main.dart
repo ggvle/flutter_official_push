@@ -174,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
               child: const Text(
-                  "获取RegId"
+                  "获取RegId "
               ),
             )
           ],
